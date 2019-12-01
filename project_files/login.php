@@ -41,6 +41,8 @@
         foreach ($users as $user) {
             // check if the user matches what was entered
             if ($user->password == $enteredPassword && $user->username == $enteredUsername) {
+                session_start();
+                $_SESSION['username'] = $user->username;
                 header("Location: http://localhost/SSSD-Final/SSSD-Final-Frontend/project_files/pages/home.html");
                 die();
             } 
