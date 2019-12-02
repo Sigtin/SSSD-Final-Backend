@@ -18,7 +18,12 @@
         while ($row = $results->fetch_assoc()) {
             // Get the data and push to the rows array
             extract($row);
-            $rowData = '{"id":'.$deckId.', "deck_name":'.'"'.$deckname.'"'.', "made_by":'.'"'.$username.'"'.', "cardlist":'.'"'.$cardlist.'"'.'}'; // make sure card list is proper json
+            if ($cardlist == null) {
+                $cardlist = "[]";
+            } else {
+                
+            }
+            $rowData = '{"id":'.$deckId.', "deck_name":'.'"'.$deckname.'"'.', "made_by":'.'"'.$username.'"'.', "cardlist":'.$cardlist.'}'; // make sure card list is proper json
             array_push($arrayOfRows, $rowData);
         }
 

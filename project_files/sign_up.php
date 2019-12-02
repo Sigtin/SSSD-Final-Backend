@@ -21,25 +21,20 @@
         // query the database
         $results = $mysqli->query($query);
 
-
-        if ($results->num_rows > 0) {
-            
-        }
-
         $users = array();
 
         while ($row = $results->fetch_assoc()) {
             extract($row);
             $user = new User();
-            $user->username = $username;
-            $user->password = $password;
+            $user->set_name($username);
+            $user->set_password($password);
 
             array_push($users, $user);
         }
 
         foreach ($users as $user) {
             // check if the username already exists in the database
-            if ($user->username == $enteredUsername) {
+            if ($user->get_name() == $enteredUsername) {
                 header("Location: http://localhost/SSSD-Final/SSSD-Final-Frontend/project_files/pages/sign_up.html");
                 die();
             }

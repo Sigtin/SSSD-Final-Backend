@@ -30,8 +30,8 @@
         while ($row = $results->fetch_assoc()) {
             extract($row);
             $user = new User();
-            $user->username = $username;
-            $user->password = $password;
+            $user->set_name($username);
+            $user->set_password($password);
 
             array_push($users, $user);
         }
@@ -40,9 +40,9 @@
 
         foreach ($users as $user) {
             // check if the user matches what was entered
-            if ($user->password == $enteredPassword && $user->username == $enteredUsername) {
+            if ($user->get_password() == $enteredPassword && $user->get_name() == $enteredUsername) {
                 session_start();
-                $_SESSION['username'] = $user->username;
+                $_SESSION['username'] = $user->get_name();
                 header("Location: http://localhost/SSSD-Final/SSSD-Final-Frontend/project_files/pages/home.html");
                 die();
             } 
