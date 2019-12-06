@@ -32,7 +32,6 @@
     class MTG_Card extends Card {
         private $oracleText;
         private $manaCost;
-        private $colorIdentity;
         private $type;
 
         function set_oracleText($oracleText) {
@@ -50,15 +49,7 @@
         function get_manaCost() {
             return $this->manaCost;
         }
-
-        function set_colorIdentity($colorIdentity) {
-            $this->colorIdentity = $colorIdentity;
-        }
-
-        function get_colorIdentity() {
-            return $this->colorIdentity;
-        }
-
+        
         function set_type($type) {
             $this->type = $type;
         }

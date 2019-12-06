@@ -10,6 +10,8 @@
 
     // Query the database
     $results = $mysqli->query($query);
+    // echo implode(" ", $results);
+    // echo $query;
 
     if ($results->num_rows > 0) {
         // Declare the rows array
@@ -20,10 +22,8 @@
             extract($row);
             if ($cardlist == null) {
                 $cardlist = "[]";
-            } else {
-                
             }
-            $rowData = '{"id":'.$deckId.', "deck_name":'.'"'.$deckname.'"'.', "made_by":'.'"'.$username.'"'.', "cardlist":'.$cardlist.'}'; // make sure card list is proper json
+            $rowData = '{"id":'.$deckId.', "deck_name":'.'"'.$deckname.'"'.', "made_by":'.'"'.$username.'"'.', "cardlist":'.$cardlist.', "game":'.'"'.$game.'"'.'}'; // make sure card list is proper json
             array_push($arrayOfRows, $rowData);
         }
 
